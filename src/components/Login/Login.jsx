@@ -1,8 +1,9 @@
-import React, { useEffect, useReducer, useState } from 'react';
+import React, { useContext, useEffect, useReducer, useState } from 'react';
 
 import Card from '../UI/Card/Card';
 import classes from './Login.module.css';
 import Button from '../UI/Button/Button';
+import AuthContext from '../../context/auth-context';
 
 const emailReducer = (prevState, action) => {
   if (action.type === 'INPUT_CHANGE') {
@@ -25,6 +26,7 @@ const passwordReducer = (prevState, action) => {
 };
 
 const Login = (props) => {
+  const authCtx = useContext(AuthContext);
   // const [enteredEmail, setEnteredEmail] = useState('');
   // const [emailIsValid, setEmailIsValid] = useState();
 
@@ -66,7 +68,7 @@ const Login = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    props.onLogin(emailState.value, passwordState.value);
+    authCtx.doLogin(emailState.value, passwordState.value);
   };
 
   return (
