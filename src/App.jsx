@@ -8,7 +8,6 @@ import AuthContext from './context/auth-context';
 function App() {
   const authCtx = useContext(AuthContext);
 
-  console.log('qq ', authCtx.isLoggedIn);
   return (
     <React.Fragment>
       <MainHeader />
